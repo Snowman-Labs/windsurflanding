@@ -1,0 +1,12 @@
+[build]
+  command = "npm run build"
+  functions = "netlify/functions"
+  publish = "dist"
+
+[build.environment]
+  PIPEFY_TOKEN = "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJQaXBlZnkiLCJpYXQiOjE3NTY4NDE5MjAsImp0aSI6IjY4NzQwYjEzLTU1OGQtNGQ1MS1iYjFkLWRlMmNjMzJmMzFkZSIsInN1YiI6MzAzMjk1MzQwLCJ1c2VyIjp7ImlkIjozMDMyOTUzNDAsImVtYWlsIjoic3Vwb3J0ZUBzbm93bWFubGFicy5jb20ifSwidXNlcl90eXBlIjoiYXV0aGVudGljYXRlZCJ9.s6lAhBXge_I6hagZKY3j0bG1w0otsA7wA2TbKtj5jR4BH7MoexFqMV2XbCnawrJdtG2sy7m3b21KI7i0Xn1s2w"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200

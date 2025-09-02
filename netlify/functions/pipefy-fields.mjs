@@ -8,7 +8,7 @@ export default async function handler(event, context) {
     const url = new URL(event.url);
     const pipeId = url.searchParams.get('pipeId') || '306642120';
 
-    const token = (globalThis.Netlify?.env?.get?.('PIPEFY_TOKEN')) || process.env.PIPEFY_TOKEN;
+    const token = process.env.PIPEFY_TOKEN;
     if (!token) {
       return new Response(JSON.stringify({ error: 'PIPEFY_TOKEN not configured', hint: 'Create a .env with PIPEFY_TOKEN=... for local dev' }), { status: 500 });
     }
