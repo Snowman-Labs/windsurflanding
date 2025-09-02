@@ -193,6 +193,10 @@ const WindsurfPartnerLanding: React.FC = () => {
               <h3 style={{ fontSize:'1.5rem', fontWeight:700, marginBottom:'1rem', color:'var(--text-white)' }}>Integrações e Automação</h3>
               <p style={{ color:'var(--text-gray)', lineHeight:1.6 }}>MCP para ferramentas internas, previews automáticos, comandos e pipelines.</p>
             </div>
+            <div className="glass-card">
+              <h3 style={{ fontSize:'1.5rem', fontWeight:700, marginBottom:'1rem', color:'var(--text-white)' }}>Modernização de Códigos Legados</h3>
+              <p style={{ color:'var(--text-gray)', lineHeight:1.6 }}>Refatoração assistida por IA, migração de tecnologias, otimização de performance e arquitetura.</p>
+            </div>
           </div>
         </div>
       </div>
