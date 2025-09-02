@@ -5,3 +5,5 @@ build/
 .DS_Store
 .env*
 !.env.example
+# Ignore Netlify state
+.netlify/
