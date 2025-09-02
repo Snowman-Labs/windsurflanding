@@ -126,7 +126,7 @@ const WindsurfPartnerLanding: React.FC = () => {
           <h2 style={{ fontSize:'clamp(2rem, 5vw, 3rem)', fontWeight:900, textAlign:'center', marginBottom:'3rem', color:'var(--text-white)' }}>
             O que entregamos
           </h2>
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(300px,1fr))', gap:'2rem', justifyContent:'center', alignItems:'stretch', justifyItems:'stretch', maxWidth:'1100px', margin:'0 auto' }}>
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(280px,1fr))', gap:'1.5rem', justifyContent:'center', alignItems:'stretch', justifyItems:'stretch', maxWidth:'1100px', margin:'0 auto', padding:'0 1rem' }}>
             <div className="glass-card">
               <h3 style={{ fontSize:'1.5rem', fontWeight:700, marginBottom:'1rem', color:'var(--text-white)' }}>Licenciamento Enterprise</h3>
               <p style={{ color:'var(--text-gray)', lineHeight:1.6 }}>Operamos licenças para organizações com <strong style={{ color:'var(--accent-blue)' }}>100+ desenvolvedores</strong>, com onboarding assistido, governança e suporte executivo.</p>
@@ -149,7 +149,7 @@ const WindsurfPartnerLanding: React.FC = () => {
           <h2 style={{ fontSize:'clamp(2rem, 5vw, 3rem)', fontWeight:900, textAlign:'center', marginBottom:'3rem', color:'var(--text-white)' }}>
             Nossa metodologia de adoção
           </h2>
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(250px,1fr))', gap:'1.5rem', justifyContent:'center', alignItems:'stretch', justifyItems:'stretch', maxWidth:'1100px', margin:'0 auto' }}>
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(240px,1fr))', gap:'1.5rem', justifyContent:'center', alignItems:'stretch', justifyItems:'stretch', maxWidth:'1100px', margin:'0 auto', padding:'0 1rem' }}>
             <div className="glass-card">
               <div style={{ fontSize:'2rem', fontWeight:900, color:'var(--accent-blue)', marginBottom:'1rem' }}>01</div>
               <h4 style={{ fontSize:'1.2rem', fontWeight:700, marginBottom:'0.5rem', color:'var(--text-white)' }}>Diagnóstico</h4>
@@ -180,7 +180,7 @@ const WindsurfPartnerLanding: React.FC = () => {
           <h2 style={{ fontSize:'clamp(2rem, 5vw, 3rem)', fontWeight:900, textAlign:'center', marginBottom:'2rem', color:'var(--text-white)' }}>
             Casos e frentes que habilitamos
           </h2>
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(300px,1fr))', gap:'2rem' }}>
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(280px,1fr))', gap:'1.5rem', padding:'0 1rem' }}>
             <div className="glass-card">
               <h3 style={{ fontSize:'1.5rem', fontWeight:700, marginBottom:'1rem', color:'var(--text-white)' }}>Modernização e Entrega Rápida</h3>
               <p style={{ color:'var(--text-gray)', lineHeight:1.6 }}>Prototipagem acelerada, refactors assistidos, menos boilerplate.</p>
