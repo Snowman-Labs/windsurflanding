@@ -1,5 +1,5 @@
 import React from 'react'
-import WindsurfPartnerLanding from './WindsurfPartnerLanding'
+import WindsurfPartnerLanding from './windsurfpartnerlanding'
 
 const App: React.FC = () => {
   return <WindsurfPartnerLanding />
