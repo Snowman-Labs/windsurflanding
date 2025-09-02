@@ -26,9 +26,8 @@ html,body,#root{height:100%;overflow-x:hidden}
     text-align: center !important;
   }
   
-  /* Force single column on very small screens */
+  /* Force single column only on small screens */
   .section-modern [style*="grid-template-columns"] {
-    grid-template-columns: 1fr !important;
     gap: 1rem !important;
     padding: 0 0.5rem !important;
   }
@@ -45,6 +44,11 @@ html,body,#root{height:100%;overflow-x:hidden}
   
   .glass-card {
     padding: 1.5rem !important;
+  }
+  
+  /* Force single column only on very small screens */
+  .section-modern [style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
   }
 }
 body{
