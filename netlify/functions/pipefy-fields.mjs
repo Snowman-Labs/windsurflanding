@@ -1,12 +1,11 @@
 // Netlify Function: GET Pipefy form fields
-import 'dotenv/config'
 // Usage: GET /.netlify/functions/pipefy-fields?pipeId=306642120
 
 const PIPEFY_API = 'https://api.pipefy.com/graphql';
 
-export default async (req) => {
+export default async function handler(event, context) {
   try {
-    const url = new URL(req.url);
+    const url = new URL(event.url);
     const pipeId = url.searchParams.get('pipeId') || '306642120';
 
     const token = (globalThis.Netlify?.env?.get?.('PIPEFY_TOKEN')) || process.env.PIPEFY_TOKEN;

@@ -1,5 +1,4 @@
-// Netlify Function: POST Pipefy create card
-import 'dotenv/config'
+// Netlify Function: POST Pipefy card creation
 // Usage: POST /.netlify/functions/pipefy-submit
 // Body JSON: { pipeId: 306642120, title?: string, fields: [{ id: string, value: any }] }
 
