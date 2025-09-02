@@ -26,16 +26,51 @@ const teamSizeOptions = [
 const WindsurfPartnerLanding: React.FC = () => {
   const [form, setForm] = useState<FormState>({ companyName:'', revenueRange:'', teamSizeRange:'', message:'' })
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState('')
   const canSubmit = useMemo(()=> form.companyName && form.revenueRange && form.teamSizeRange, [form])
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setForm((f)=>({ ...f, [name]: value }))
   }
-  const onSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('Lead enviado:', form)
-    setSubmitted(true)
+    setSubmitting(true)
+    setSubmitted(false)
+    setError('')
+
+    try {
+      const response = await fetch('/api/pipefy/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          pipeId: 306642120,
+          title: `Lead Windsurf - ${form.companyName}`,
+          fields: [
+            { id: 'nome_da_empresa', value: form.companyName },
+            { id: 'faturamento', value: form.revenueRange },
+            { id: 'tamanho_do_time', value: form.teamSizeRange },
+            { id: 'como_podemos_te_ajudar_fale_mais_sobre_o_seu_momento_e_time', value: form.message }
+          ]
+        })
+      })
+
+      if (response.ok) {
+        const result = await response.json()
+        console.log('Card criado no Pipefy:', result)
+        setSubmitted(true)
+        setForm({ companyName: '', revenueRange: '', teamSizeRange: '', message: '' })
+      } else {
+        const error = await response.json()
+        setError(error.error || 'Erro ao enviar formulário')
+      }
+    } catch (err) {
+      console.error('Erro na requisição:', err)
+      setError('Erro de conexão. Tente novamente.')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -142,7 +177,7 @@ const WindsurfPartnerLanding: React.FC = () => {
       {/* CASES MODERN */}
       <div className="section-modern">
         <div className="container-modern">
-          <h2 style={{ fontSize:'clamp(2rem, 5vw, 3rem)', fontWeight:900, textAlign:'center', marginBottom:'3rem', color:'var(--text-white)' }}>
+          <h2 style={{ fontSize:'clamp(2rem, 5vw, 3rem)', fontWeight:900, textAlign:'center', marginBottom:'2rem', color:'var(--text-white)' }}>
             Casos e frentes que habilitamos
           </h2>
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(300px,1fr))', gap:'2rem' }}>
@@ -173,7 +208,7 @@ const WindsurfPartnerLanding: React.FC = () => {
               <p style={{ color: 'var(--text-gray)', fontSize: '1.1rem', marginBottom: '2rem', lineHeight: 1.6 }}>
                 Preencha os campos e retornaremos com uma proposta sob medida. Se preferir, agendamos um diagnóstico inicial sem custo.
               </p>
-              <form onSubmit={onSubmit} className="form-modern">
+              <form onSubmit={handleSubmit} className="form-modern">
                 <div style={{ display: 'grid', gap: '1.5rem' }}>
                   <div>
                     <label htmlFor="companyName" style={{ display: 'block', fontSize: '0.9rem', fontWeight: 600, marginBottom: '0.5rem', color: 'var(--text-white)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
@@ -203,7 +238,11 @@ const WindsurfPartnerLanding: React.FC = () => {
                       required
                     >
                       <option value="">Selecione uma faixa</option>
-                      {revenueOptions.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
+                      <option value="Até 10 milhões ano">Até 10 milhões ano</option>
+                      <option value="Entre 11 milhões a 30 milhões">Entre 11 milhões a 30 milhões</option>
+                      <option value="Entre 31 milhões a 80 milhões">Entre 31 milhões a 80 milhões</option>
+                      <option value="Entre 81 milhões a 200 milhões">Entre 81 milhões a 200 milhões</option>
+                      <option value="Acima de 200 milhões ano">Acima de 200 milhões ano</option>
                     </select>
                   </div>
                   <div>
@@ -219,7 +258,12 @@ const WindsurfPartnerLanding: React.FC = () => {
                       required
                     >
                       <option value="">Selecione uma faixa</option>
-                      {teamSizeOptions.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
+                      <option value="Até 10 Desenvolvedores,">Até 10 Desenvolvedores</option>
+                      <option value="Entre 11 a 30,">Entre 11 a 30</option>
+                      <option value="Entre 31 a 50,">Entre 31 a 50</option>
+                      <option value="Entre 51 a 100,">Entre 51 a 100</option>
+                      <option value="Entre 101 a 200,">Entre 101 a 200</option>
+                      <option value="Acima de 200 Desenvolvedores">Acima de 200 Desenvolvedores</option>
                     </select>
                   </div>
                   <div>
@@ -239,24 +283,36 @@ const WindsurfPartnerLanding: React.FC = () => {
                   </div>
                   <button
                     type="submit"
-                    disabled={!canSubmit}
-                    className={canSubmit ? 'cta-primary-modern' : ''}
-                    style={{
-                      background: canSubmit ? 'var(--accent-gradient)' : 'rgba(255,255,255,0.1)',
-                      color: '#fff',
-                      padding: '16px 32px',
-                      borderRadius: '50px',
-                      fontWeight: 700,
-                      fontSize: '16px',
-                      border: 'none',
-                      cursor: canSubmit ? 'pointer' : 'not-allowed',
-                      marginTop: '1rem',
+                    disabled={submitting}
+                    style={{ 
+                      background: submitting ? '#6b7280' : '#D4AF37', 
+                      color: '#0B0F16', 
+                      padding: '16px 32px', 
+                      borderRadius: '12px', 
+                      border: 'none', 
+                      fontSize: '18px', 
+                      fontWeight: '700', 
+                      cursor: submitting ? 'not-allowed' : 'pointer', 
                       width: '100%',
-                      transition: 'all 0.3s ease'
+                      marginTop: '16px',
+                      opacity: submitting ? 0.7 : 1
                     }}
                   >
-                    {submitted ? '✓ Enviado!' : 'Enviar Solicitação'}
+                    {submitting ? 'Enviando...' : 'Enviar Solicitação'}
                   </button>
+
+                  {error && (
+                    <div style={{ 
+                      marginTop: '12px', 
+                      padding: '12px', 
+                      background: '#ef4444', 
+                      color: '#fff', 
+                      borderRadius: '8px', 
+                      fontSize: '14px' 
+                    }}>
+                      ⚠️ {error}
+                    </div>
+                  )}
                 </div>
               </form>
             </div>

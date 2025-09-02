@@ -1,3 +1,21 @@
 {
-  "siteId": "6ff6d44b-05df-4b64-af26-580230e6879d"
+	"siteId": "6ff6d44b-05df-4b64-af26-580230e6879d",
+	"geolocation": {
+		"data": {
+			"city": "Florianópolis",
+			"country": {
+				"code": "BR",
+				"name": "Brazil"
+			},
+			"subdivision": {
+				"code": "SC",
+				"name": "Santa Catarina"
+			},
+			"timezone": "America/Sao_Paulo",
+			"latitude": -27.6168,
+			"longitude": -48.4997,
+			"postalCode": "88000"
+		},
+		"timestamp": 1756842646181
+	}
 }
