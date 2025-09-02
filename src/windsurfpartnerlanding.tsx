@@ -44,8 +44,8 @@ const WindsurfPartnerLanding: React.FC = () => {
       <header style={{ padding: '24px 0' }}>
         <div className="container-modern">
           <div style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:'40px' }}>
-            <img src="/logos/Windsurf-white-wordmark.png" alt="Windsurf" style={{ height:'clamp(36px, 6vw, 64px)', display:'block' }} />
-            <img src="/logos/Logo-snow-ai-fundo-escuro.svg" alt="Snowman Labs" style={{ height:'clamp(36px, 6vw, 64px)', display:'block' }} />
+            <img src="/logos/windsurf-white-wordmark.png" alt="Windsurf" style={{ height:'clamp(36px, 6vw, 64px)', display:'block' }} />
+            <img src="/logos/logo-snow-ai-fundo-escuro.svg" alt="Snowman Labs" style={{ height:'clamp(36px, 6vw, 64px)', display:'block' }} />
           </div>
         </div>
       </header>
