@@ -371,11 +371,8 @@ const WindsurfPartnerLanding: React.FC = () => {
             <div style={{ fontSize: '1.5rem', fontWeight: 900, color: 'var(--text-white)', marginBottom: '0.5rem', textTransform:'none' }}>
               Parceiro oficial windsurf
             </div>
-            <div style={{ color: 'var(--text-gray)' }}>
-              Brasil • Atendimento corporativo
-            </div>
             <div style={{ color: 'var(--text-gray)', fontSize: '0.8rem' }}>
-              Snowman Labs LTDA • CNPJ: 16.934.470/0001-62
+              © 2024 Snowman Labs. Todos os direitos reservados.
             </div>
           </div>
         </div>
