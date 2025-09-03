@@ -74,15 +74,19 @@ const TreinamentoPage = () => {
   return (
     <div style={{ minHeight: '100vh', background: 'var(--bg-dark)' }}>
       {/* HEADER */}
-      <div style={{ padding: '2rem 0', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-        <div className="container-modern">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
-            <a href="/" style={{ fontSize: '1.5rem', fontWeight: 900, color: 'var(--text-white)', textDecoration: 'none' }}>
-              Snowman Labs
+      <div style={{ padding: '24px 0', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+        <div className="container-modern" style={{ position:'relative' }}>
+          {/* Back arrow (top-left) */}
+          <div style={{ position:'absolute', left:0, top:0 }}>
+            <a href="/" aria-label="Voltar" title="Voltar" className="cta-secondary-modern" style={{ display:'inline-flex', alignItems:'center', gap:'8px', padding:'6px 10px', fontSize:'0.9rem' }}>
+              <span style={{ display:'inline-block', transform:'translateY(-1px)' }}>←</span>
+              <span>Voltar</span>
             </a>
-            <a href="/" className="cta-secondary-modern" style={{ fontSize: '0.9rem', padding: '0.5rem 1rem' }}>
-              ← Voltar
-            </a>
+          </div>
+          {/* Centered logos */}
+          <div style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:'40px' }}>
+            <img src="/logos/windsurf-white-wordmark.png" alt="Windsurf" style={{ height:'clamp(36px, 6vw, 64px)', display:'block' }} />
+            <img src="/logos/logo-snow-ai-fundo-escuro.svg" alt="Snowman Labs" style={{ height:'clamp(36px, 6vw, 64px)', display:'block' }} />
           </div>
         </div>
       </div>
