@@ -6,6 +6,21 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 export default defineConfig({
+  server: {
+    host: '0.0.0.0',
+    port: 5174,
+    allowedHosts: true,
+    cors: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': '*'
+    },
+    open: true,
+  },
+  define: {
+    global: 'globalThis'
+  },
   plugins: [
     react(),
     // Netlify emulation (prod + some dev features)
@@ -18,6 +33,14 @@ export default defineConfig({
         const PIPEFY_API = 'https://api.pipefy.com/graphql'
         const token = process.env.PIPEFY_TOKEN
         const hasToken = !!token
+
+        // Disable host checking completely
+        server.middlewares.use((req, res, next) => {
+          res.setHeader('Access-Control-Allow-Origin', '*')
+          res.setHeader('Access-Control-Allow-Methods', '*')
+          res.setHeader('Access-Control-Allow-Headers', '*')
+          next()
+        })
 
         // Health
         server.middlewares.use('/api/health', async (req, res) => {

@@ -2,6 +2,8 @@ import React, { useMemo, useState } from 'react'
 
 interface FormState {
   companyName: string
+  email: string
+  whatsapp: string
   revenueRange: string
   teamSizeRange: string
   message: string
@@ -24,11 +26,11 @@ const teamSizeOptions = [
 ]
 
 const WindsurfPartnerLanding: React.FC = () => {
-  const [form, setForm] = useState<FormState>({ companyName:'', revenueRange:'', teamSizeRange:'', message:'' })
+  const [form, setForm] = useState<FormState>({ companyName:'', email:'', whatsapp:'', revenueRange:'', teamSizeRange:'', message:'' })
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
-  const canSubmit = useMemo(()=> form.companyName && form.revenueRange && form.teamSizeRange, [form])
+  const canSubmit = useMemo(()=> form.companyName && form.email && form.whatsapp && form.revenueRange && form.teamSizeRange, [form])
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -49,6 +51,8 @@ const WindsurfPartnerLanding: React.FC = () => {
           title: `Lead Windsurf - ${form.companyName}`,
           fields: [
             { id: 'nome_da_empresa', value: form.companyName },
+            { id: 'email', value: form.email },
+            { id: 'telefone_whatsapp', value: form.whatsapp },
             { id: 'faturamento', value: form.revenueRange },
             { id: 'tamanho_do_time', value: form.teamSizeRange },
             { id: 'como_podemos_te_ajudar_fale_mais_sobre_o_seu_momento_e_time', value: form.message }
@@ -60,7 +64,7 @@ const WindsurfPartnerLanding: React.FC = () => {
         const result = await response.json()
         console.log('Card criado no Pipefy:', result)
         setSubmitted(true)
-        setForm({ companyName: '', revenueRange: '', teamSizeRange: '', message: '' })
+        setForm({ companyName: '', email: '', whatsapp: '', revenueRange: '', teamSizeRange: '', message: '' })
       } else {
         const error = await response.json()
         setError(error.error || 'Erro ao enviar formulário')
@@ -201,6 +205,25 @@ const WindsurfPartnerLanding: React.FC = () => {
         </div>
       </div>
 
+      {/* TRAINING SECTION */}
+      <div className="section-modern section-dark">
+        <div className="container-modern">
+          <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+            <h2 style={{ fontSize:'clamp(2rem, 5vw, 3rem)', fontWeight:900, marginBottom:'2rem', color:'var(--text-white)' }}>
+              Nosso treinamento
+            </h2>
+            <p style={{ color:'var(--text-gray)', fontSize:'1.2rem', lineHeight:1.6, marginBottom:'2rem' }}>
+              Executamos treinamentos remotos dentro das empresas com acompanhamento de resultados e mentoria por <strong style={{ color:'var(--accent-blue)' }}>3 meses</strong>. 
+              O primeiro mês é mais intensivo, seguido de 2 meses de acompanhamento e mentoria da metodologia.
+            </p>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <a href="/treinamento" className="cta-primary-modern">Saber Mais</a>
+              <a href="#contato" className="cta-secondary-modern">Solicitar Proposta</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* FORM MODERN */}
       <div id="contato" className="section-modern" style={{ background: 'rgba(10,10,10,0.95)' }}>
         <div className="container-modern">
@@ -225,6 +248,36 @@ const WindsurfPartnerLanding: React.FC = () => {
                       value={form.companyName}
                       onChange={onChange}
                       placeholder="Ex: Acme Corp"
+                      className="input-modern"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" style={{ display: 'block', fontSize: '0.9rem', fontWeight: 600, marginBottom: '0.5rem', color: 'var(--text-white)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                      Email *
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={form.email}
+                      onChange={onChange}
+                      placeholder="contato@empresa.com"
+                      className="input-modern"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="whatsapp" style={{ display: 'block', fontSize: '0.9rem', fontWeight: 600, marginBottom: '0.5rem', color: 'var(--text-white)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                      WhatsApp *
+                    </label>
+                    <input
+                      id="whatsapp"
+                      name="whatsapp"
+                      type="tel"
+                      value={form.whatsapp}
+                      onChange={onChange}
+                      placeholder="(11) 99999-9999"
                       className="input-modern"
                       required
                     />
@@ -288,18 +341,14 @@ const WindsurfPartnerLanding: React.FC = () => {
                   <button
                     type="submit"
                     disabled={submitting}
+                    className="cta-primary-modern"
                     style={{ 
-                      background: submitting ? '#6b7280' : '#D4AF37', 
-                      color: '#0B0F16', 
-                      padding: '16px 32px', 
-                      borderRadius: '12px', 
-                      border: 'none', 
-                      fontSize: '18px', 
-                      fontWeight: '700', 
-                      cursor: submitting ? 'not-allowed' : 'pointer', 
                       width: '100%',
                       marginTop: '16px',
-                      opacity: submitting ? 0.7 : 1
+                      fontSize: '18px',
+                      padding: '16px 32px',
+                      opacity: submitting ? 0.7 : 1,
+                      cursor: submitting ? 'not-allowed' : 'pointer'
                     }}
                   >
                     {submitting ? 'Enviando...' : 'Enviar Solicitação'}
