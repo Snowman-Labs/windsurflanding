@@ -251,11 +251,13 @@ const TreinamentoPage = () => {
              *   />
              * </div>
              */}
-            <div style={{ margin: '5rem 0 4rem', textAlign: 'center' }}>
-              <a href="#contato" className="cta-primary-modern" style={{ fontSize: '1.1rem', padding: '1rem 2rem' }}>
-                Falar com especialista
-              </a>
-            </div>
+            {/**
+             * <div style={{ margin: '5rem 0 4rem', textAlign: 'center' }}>
+             *   <a href="#contato" className="cta-primary-modern" style={{ fontSize: '1.1rem', padding: '1rem 2rem' }}>
+             *     Falar com especialista
+             *   </a>
+             * </div>
+             */}
           </div>
         </div>
       </div>
