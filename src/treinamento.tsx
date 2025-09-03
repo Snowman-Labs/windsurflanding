@@ -9,7 +9,7 @@ import Timeline from './components/Timeline'
 import Marquee from './components/Marquee'
 import DividerGlow from './components/DividerGlow'
 import FAQAccordion from './components/FAQAccordion'
-import PricingBanner from './components/PricingBanner'
+// import PricingBanner from './components/PricingBanner' // mantido comentado para uso futuro
 
 const TreinamentoPage = () => {
   const [formData, setFormData] = useState({
@@ -241,13 +241,20 @@ const TreinamentoPage = () => {
               />
             </PageSection>
 
-            {/* PREÇO E CTA */}
-            <div style={{ margin: '5rem 0 4rem' }}>
-              <PricingBanner
-                price="R$ 89.000"
-                compareAt="R$ 129.000"
-                bullets={['Valor único para até 20 desenvolvedores', '3 meses de acompanhamento inclusos']}
-              />
+            {/* PREÇO E CTA (ocultado temporariamente) */}
+            {/**
+             * <div style={{ margin: '5rem 0 4rem' }}>
+             *   <PricingBanner
+             *     price="R$ 89.000"
+             *     compareAt="R$ 129.000"
+             *     bullets={['Valor único para até 20 desenvolvedores', '3 meses de acompanhamento inclusos']}
+             *   />
+             * </div>
+             */}
+            <div style={{ margin: '5rem 0 4rem', textAlign: 'center' }}>
+              <a href="#contato" className="cta-primary-modern" style={{ fontSize: '1.1rem', padding: '1rem 2rem' }}>
+                Falar com especialista
+              </a>
             </div>
           </div>
         </div>
