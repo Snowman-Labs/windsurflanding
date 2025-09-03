@@ -86,6 +86,15 @@ const WindsurfPartnerLanding: React.FC = () => {
             <img src="/logos/windsurf-white-wordmark.png" alt="Windsurf" style={{ height:'clamp(36px, 6vw, 64px)', display:'block' }} />
             <img src="/logos/logo-snow-ai-fundo-escuro.svg" alt="Snowman Labs" style={{ height:'clamp(36px, 6vw, 64px)', display:'block' }} />
           </div>
+          {/* SECTION NAV */}
+          <div style={{ display:'flex', justifyContent:'center', gap:'8px', marginTop:'16px' }}>
+            <span style={{ padding:'6px 12px', borderRadius: '999px', background:'rgba(59,130,246,0.15)', color:'#93c5fd', fontSize:'0.85rem', fontWeight:700 }}>
+              Licenças
+            </span>
+            <a href="/treinamento" style={{ padding:'6px 12px', borderRadius:'999px', background:'rgba(255,255,255,0.08)', color:'#e5e7eb', fontSize:'0.85rem', textDecoration:'none', fontWeight:600 }}>
+              Treinamento
+            </a>
+          </div>
         </div>
       </header>
 
@@ -102,8 +111,8 @@ const WindsurfPartnerLanding: React.FC = () => {
                 Metodologias próprias e acesso direto ao time de engenharia da Windsurf.
               </p>
               <div style={{ display: 'flex', gap: '1rem', marginBottom: '3rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-                <a href="#contato" className="cta-primary-modern">Solicitar Proposta</a>
-                <a href="#contato" className="cta-secondary-modern">Agendar Diagnóstico</a>
+                <a href="#contato" className="cta-primary-modern">Quero licenças</a>
+                <a href="/treinamento" className="cta-secondary-modern">Quero treinamento</a>
               </div>
               <div className="stats-modern">
                 <div className="stat-item">
